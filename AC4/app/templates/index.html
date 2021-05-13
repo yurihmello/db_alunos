@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal - Cadastro de Alunos</title>
+    <link type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    
+ 
+</head>
+<body>
+    <div class="container" style="margin: 5px;">
+        <h1 class="classe1">Cadastro de Alunos</h1> 
+        <a href="/add">
+            <img width="24px" src="{{url_for('static', filename='image/adicionar-usuario.png')}}">
+        </a>
+        <br />
+    </div>
+    <div style="margin: 5px;">
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th>RA</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>CEP</th>
+                    <th>Rua</th>
+                    <th>Numero</th>
+                    <th>Complemento</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Ações</th>
+        </thead>     
+        <tbody>
+                {% for a in alunos %}
+                <tr>
+                    <td>{{a.ra}}</td>
+                    <td>{{a.name}}</td>
+                    <td>{{a.email}}</td>
+                    <td>{{a.cep}}</td>
+                    <td>{{a.rua}}</td>
+                    <td>{{a.numero}}</td>
+                    <td>{{a.complemento}}</td>
+                    <td>{{a.bairro}}</td>
+                    <td>{{a.cidade}}</td>
+                    <td>{{a.uf}}</td>
+                    <td>
+                        <a href="/edit/{{a.ra}}">
+                            <img width="24px" src="{{url_for('static', filename='image/do-utilizador.png')}}">
+                        </a>
+                        <a href="/delete/{{a.ra}}">
+                            <img width="24px" src="{{url_for('static', filename='image/deletar-usuario.png')}}">
+                        </a>
+                    </td>    
+                </tr>
+        {% endfor %}
+        </table>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}">
+        </script>
+    </div>
+</body>
+</html>
